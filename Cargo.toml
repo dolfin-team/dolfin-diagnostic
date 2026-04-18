@@ -6,7 +6,7 @@ license = "MIT"
 keywords = ["semantic-web", "ontology", "dolfin", "knowledge-graph", "language"]
 categories = ["compilers", "parsing"]
 description = "Unified diagnostic types for the Dolfin toolchain"
-homepage = "www.dolfin.fr"
+homepage = "https://www.dolfin.fr"
 repository = "https://github.com/dolfin-team/dolfin-diagnostic"
 readme = "README.md"
 

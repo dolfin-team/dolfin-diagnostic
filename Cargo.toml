@@ -1,0 +1,15 @@
+[package]
+name = "dolfin-diagnostic"
+version = "0.1.3"
+edition = "2024"
+license = "MIT"
+keywords = ["semantic-web", "ontology", "dolfin", "knowledge-graph", "language"]
+categories = ["compilers", "parsing"]
+description = "Unified diagnostic types for the Dolfin toolchain"
+
+[dependencies]
+lsp-types = { version = "0.95", optional = true }
+
+[features]
+default = []
+lsp = ["dep:lsp-types"]

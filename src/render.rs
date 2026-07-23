@@ -6,11 +6,18 @@ use crate::{Diagnostic, Severity, Span};
 ///
 /// `source` — the full source text of the file (used for inline context).
 /// `filename` — displayed in the `-->` location line (defaults to `<input>`).
-pub fn format_diagnostic(diag: &Diagnostic, source: Option<&str>, filename: Option<&str>) -> String {
+pub fn format_diagnostic(
+    diag: &Diagnostic,
+    source: Option<&str>,
+    filename: Option<&str>,
+) -> String {
     let mut out = String::new();
 
     // Header: severity[code]: message
-    out.push_str(&format!("{}[{}]: {}", diag.severity, diag.code, diag.message));
+    out.push_str(&format!(
+        "{}[{}]: {}",
+        diag.severity, diag.code, diag.message
+    ));
 
     // Location line
     if let Some(span) = &diag.span {
@@ -64,8 +71,14 @@ pub fn print_diagnostics(diags: &[Diagnostic], source: &str, path: &Path) {
 
 /// Print a summary line: `N error(s), M warning(s)`.
 pub fn print_summary(diags: &[Diagnostic]) {
-    let errors = diags.iter().filter(|d| d.severity == Severity::Error).count();
-    let warnings = diags.iter().filter(|d| d.severity == Severity::Warning).count();
+    let errors = diags
+        .iter()
+        .filter(|d| d.severity == Severity::Error)
+        .count();
+    let warnings = diags
+        .iter()
+        .filter(|d| d.severity == Severity::Warning)
+        .count();
 
     if errors == 0 && warnings == 0 {
         return;
@@ -73,10 +86,18 @@ pub fn print_summary(diags: &[Diagnostic]) {
 
     let mut parts = Vec::new();
     if errors > 0 {
-        parts.push(format!("{} error{}", errors, if errors == 1 { "" } else { "s" }));
+        parts.push(format!(
+            "{} error{}",
+            errors,
+            if errors == 1 { "" } else { "s" }
+        ));
     }
     if warnings > 0 {
-        parts.push(format!("{} warning{}", warnings, if warnings == 1 { "" } else { "s" }));
+        parts.push(format!(
+            "{} warning{}",
+            warnings,
+            if warnings == 1 { "" } else { "s" }
+        ));
     }
     eprintln!("{}", parts.join(", "));
 }
@@ -101,7 +122,12 @@ fn format_source_context(source: &str, span: &Span) -> Option<String> {
     out.push_str(&format!("{:>width$} |\n", "", width = gutter_width));
 
     // Source line
-    out.push_str(&format!("{:>width$} | {}\n", line_num, line, width = gutter_width));
+    out.push_str(&format!(
+        "{:>width$} | {}\n",
+        line_num,
+        line,
+        width = gutter_width
+    ));
 
     // Underline
     let col_start = span.start.column.saturating_sub(1);

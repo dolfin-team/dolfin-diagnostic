@@ -32,7 +32,10 @@ pub struct DiagnosticLabel {
 
 impl DiagnosticLabel {
     pub fn new(span: Span, message: impl Into<String>) -> Self {
-        Self { span, message: message.into() }
+        Self {
+            span,
+            message: message.into(),
+        }
     }
 }
 

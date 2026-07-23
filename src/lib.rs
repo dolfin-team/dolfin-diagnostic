@@ -13,6 +13,7 @@ mod fix;
 mod render;
 mod severity;
 mod span;
+mod text;
 
 #[cfg(feature = "lsp")]
 pub mod lsp;
@@ -24,3 +25,4 @@ pub use fix::{FixSuggestion, TextEdit};
 pub use render::{format_diagnostic, print_diagnostics, print_summary};
 pub use severity::Severity;
 pub use span::{Location, Span};
+pub use text::levenshtein;

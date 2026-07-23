@@ -33,5 +33,7 @@ pub fn position_to_location(pos: lsp_types::Position) -> Location {
 
 /// Returns `true` if `span` contains `byte_offset`.
 pub fn span_contains(span: Option<Span>, byte_offset: usize) -> bool {
-    span.map_or(false, |s| s.start.offset <= byte_offset && byte_offset <= s.end.offset)
+    span.map_or(false, |s| {
+        s.start.offset <= byte_offset && byte_offset <= s.end.offset
+    })
 }

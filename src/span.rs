@@ -13,7 +13,11 @@ pub struct Location {
 
 impl Location {
     pub fn new(line: usize, column: usize, offset: usize) -> Self {
-        Self { line, column, offset }
+        Self {
+            line,
+            column,
+            offset,
+        }
     }
 }
 
@@ -51,7 +55,10 @@ impl Span {
 
     /// Create a zero-width span at a single location (for insertion points).
     pub fn at(location: Location) -> Self {
-        Self { start: location, end: location }
+        Self {
+            start: location,
+            end: location,
+        }
     }
 
     /// Merge two spans into one that covers both.
@@ -66,7 +73,11 @@ impl Span {
 impl fmt::Display for Span {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         if self.start.line == self.end.line {
-            write!(f, "{}:{}-{}", self.start.line, self.start.column, self.end.column)
+            write!(
+                f,
+                "{}:{}-{}",
+                self.start.line, self.start.column, self.end.column
+            )
         } else {
             write!(
                 f,

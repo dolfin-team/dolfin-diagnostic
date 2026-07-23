@@ -44,4 +44,9 @@ impl DiagnosticCode {
     pub const UNRESOLVED_TYPE: DiagnosticCode = DiagnosticCode::Semantic(1);
     pub const DUPLICATE_DECLARATION: DiagnosticCode = DiagnosticCode::Semantic(2);
     pub const CIRCULAR_INHERITANCE: DiagnosticCode = DiagnosticCode::Semantic(3);
+    pub const UNKNOWN_PROPERTY: DiagnosticCode = DiagnosticCode::Semantic(4);
+    pub const INVALID_TEMPORAL: DiagnosticCode = DiagnosticCode::Semantic(5);
+    pub const UNBOUND_VARIABLE: DiagnosticCode = DiagnosticCode::Semantic(6);
+    pub const INVALID_QUANTITY: DiagnosticCode = DiagnosticCode::Semantic(7);
+    pub const DIMENSION_MISMATCH: DiagnosticCode = DiagnosticCode::Semantic(8);
 }

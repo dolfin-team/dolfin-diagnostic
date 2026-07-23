@@ -21,7 +21,7 @@ dependencies = [
 
 [[package]]
 name = "dolfin-diagnostic"
-version = "0.1.3"
+version = "0.1.8"
 dependencies = [
  "lsp-types",
 ]

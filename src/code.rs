@@ -49,4 +49,10 @@ impl DiagnosticCode {
     pub const UNBOUND_VARIABLE: DiagnosticCode = DiagnosticCode::Semantic(6);
     pub const INVALID_QUANTITY: DiagnosticCode = DiagnosticCode::Semantic(7);
     pub const DIMENSION_MISMATCH: DiagnosticCode = DiagnosticCode::Semantic(8);
+    /// A bare name used as a fact value that is neither a fact, an enum
+    /// member nor a concept anywhere in the package.
+    pub const UNRESOLVED_REFERENCE: DiagnosticCode = DiagnosticCode::Semantic(9);
+    /// A fact that does not set a field its types require (`one`, `some`,
+    /// `exactly n`, `at least n`, own or inherited).
+    pub const MISSING_REQUIRED_VALUE: DiagnosticCode = DiagnosticCode::Semantic(10);
 }

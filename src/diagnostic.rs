@@ -15,6 +15,9 @@ pub struct Diagnostic {
     pub help: Option<String>,
     /// Optional automated fix suggestion.
     pub fix: Option<FixSuggestion>,
+    /// Grammar terminals a parser would have accepted at `span` (parse
+    /// errors only, e.g. `NAME`). Empty when unknown or not a parse error.
+    pub expected: Vec<String>,
 }
 
 impl Diagnostic {
@@ -58,6 +61,7 @@ pub struct DiagnosticBuilder {
     help: Option<String>,
     labels: Vec<DiagnosticLabel>,
     fix: Option<FixSuggestion>,
+    expected: Vec<String>,
 }
 
 impl DiagnosticBuilder {
@@ -70,6 +74,7 @@ impl DiagnosticBuilder {
             help: None,
             labels: vec![],
             fix: None,
+            expected: vec![],
         }
     }
 
@@ -119,6 +124,11 @@ impl DiagnosticBuilder {
         self
     }
 
+    pub fn expected(mut self, expected: Vec<String>) -> Self {
+        self.expected = expected;
+        self
+    }
+
     pub fn build(self) -> Diagnostic {
         Diagnostic {
             severity: self.severity,
@@ -128,6 +138,7 @@ impl DiagnosticBuilder {
             help: self.help,
             labels: self.labels,
             fix: self.fix,
+            expected: self.expected,
         }
     }
 }
